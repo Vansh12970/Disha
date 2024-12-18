@@ -3,6 +3,8 @@
 ## Overview
 DISHA is a cutting-edge application designed to address the critical need for effective and timely disaster management. By leveraging advanced technologies like AI-powered sentiment analysis and real-time data aggregation, DISHA empowers rescue agencies to respond to disasters more efficiently and with greater accuracy.
 
+---
+
 ## Problem Statement
 Natural disasters often strike without warning, leaving communities vulnerable and unprepared. Key challenges in disaster management include:
 
@@ -10,34 +12,35 @@ Natural disasters often strike without warning, leaving communities vulnerable a
 2. **Misinformation Spread**: False information on social media can hinder rescue efforts and create unnecessary panic.
 3. **Language Barriers**: Disaster-related information is often unavailable in local languages, making it inaccessible to those who need it most.
 
+---
 
 ## Our Solution: DISHA
 DISHA aims to bridge the gaps in disaster management through an intelligent and user-friendly platform that ensures accurate, real-time, and actionable information sharing. Key features of DISHA include:
 
-### **1. Real-Time Data Aggregation**
+### 1. Real-Time Data Aggregation
 - Collects disaster-related information from social media, news outlets, and official channels.
 - Aggregates data into a unified platform for ease of access.
 
-### **2. AI-Powered Sentiment Analysis**
+### 2. AI-Powered Sentiment Analysis
 - Analyzes public sentiments to identify areas of urgency and prioritize response efforts.
 - Filters out misinformation by cross-verifying data from trusted sources.
 
-### **3. Multilingual Support**
+### 3. Multilingual Support
 - Offers real-time translation of disaster-related content into multiple languages.
 - Ensures inclusivity for diverse communities worldwide.
 
-### **5. Predictive Analysis**
+### 4. Predictive Analysis
 - Leverages historical data and machine learning models to predict disaster trends and risks.
 
-### **6. Resource Allocation and Mapping**
+### 5. Resource Allocation and Mapping
 - Provides real-time insights into the availability of resources such as medical aid, shelters, and food supplies.
 - Visual mapping of resource locations for easy navigation.
 
-### **7. Educational Content and Alerts**
+### 6. Educational Content and Alerts
 - Disseminates educational resources on disaster preparedness and safety measures.
 - Sends timely alerts and updates to keep users informed.
 
-### **9. Post-Disaster Support**
+### 7. Post-Disaster Support
 - Facilitates donation requests and resource distribution for rehabilitation efforts.
 - Enables multimedia messaging for better communication during relief activities.
 
@@ -51,7 +54,7 @@ DISHA aims to bridge the gaps in disaster management through an intelligent and 
 ---
 
 ## Technology Stack
-- **Frontend**: HTML, CSS, Javascript and React Native for a responsive and user-friendly interface.
+- **Frontend**: HTML, CSS, JavaScript, and React Native for a responsive and user-friendly interface.
 - **Backend**: Python and FastAPI for robust server-side operations.
 - **Database**: 
 - **AI/ML**: TensorFlow and PyTorch for predictive analysis and sentiment detection.
@@ -70,4 +73,5 @@ DISHA aims to bridge the gaps in disaster management through an intelligent and 
 
 ## Conclusion
 DISHA is more than just a disaster management tool; it is a lifeline for communities in crisis. By harnessing the power of technology and collaboration, DISHA strives to make disaster response faster, more efficient, and inclusive. Together, we can build a safer, more resilient world.
+
 
