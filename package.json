@@ -1,0 +1,27 @@
+{
+  "name": "disha",
+  "version": "1.0.0",
+  "description": "DISHA project folder",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vansh12970/DISHA.git"
+  },
+  "keywords": [
+    "DISHA"
+  ],
+  "author": "TEAM codeX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vansh12970/DISHA/issues"
+  },
+  "homepage": "https://github.com/Vansh12970/DISHA#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2"
+  }
+}
