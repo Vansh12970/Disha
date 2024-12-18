@@ -55,8 +55,8 @@ DISHA aims to bridge the gaps in disaster management through an intelligent and 
 
 ## Technology Stack
 - **Frontend**: HTML, CSS, JavaScript, and React Native for a responsive and user-friendly interface.
-- **Backend**: Python and FastAPI for robust server-side operations.
-- **Database**: 
+- **Backend**: Node.js and Express.js Python and FastAPI for robust server-side operations.
+- **Database**: Mongo DB.
 - **AI/ML**: TensorFlow and PyTorch for predictive analysis and sentiment detection.
 - **Mapping**: Google Maps API for resource and disaster mapping.
 - **Messaging**: Twilio API for SMS and multimedia communication.
