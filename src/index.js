@@ -3,7 +3,7 @@ import connectDB from "./db/index.js";
 
 //load enviornment variables
 dotenv.config({
-    path: './env',
+    path: './.env',
 });
 
 //connect to database define in db folder in index.js
