@@ -18,12 +18,11 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
-//ROUTES IMPORT
-
+//routes import
 import userRouter from "./routes/user.routes.js"
 
 //Routes declaration
-app.use("/api/v1/users",userRouter )
-//this will create a url like https:8000/api/v1/users/registers
+app.use("/api/v1/users", userRouter )
+//this will create a url like https:8080/api/v1/users/registers
 
 export { app }

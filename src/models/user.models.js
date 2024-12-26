@@ -37,14 +37,19 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        coverImage: {
+        profileImage: {
             type: String, //cloudinary url
         },
-        location :{
+        location: {
             type: {
-                lat: {type: Number, required: true,},
-                lng: {type: Number, required: true}
+                type: String, 
+                enum: ['Point'], 
+                required: true 
             },
+            coordinates: {
+                type: [Number], 
+                required: true
+            }
         },
         // should i include this feature that how many videos user watch, the videos comes in report
         watchHistory: [

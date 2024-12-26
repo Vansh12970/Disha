@@ -4,13 +4,14 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
+
 const registerUser = asyncHandler(async (req, res) => {
     const { fullName, email, username, password, addressLine1, state, city, location } = req.body;
 
     // Validate required fields
     if (
         [fullName, email, username, password, addressLine1, state, city, location].some(
-            (field) => field?.trim() === ""
+            (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
         )
     ) {
         throw new ApiError(400, "All fields are required");
@@ -25,13 +26,15 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(409, "User with this email or username already exists");
     }
 
+   
     // Handle coverImage upload
-    let coverImageLocalPath;
-    if (req.files && Array.isArray(req.files.coverImage)
-    && req.files.coverImage.length > 0) {
-        coverImageLocalPath = req.files.coverImage[0].path}
+    let profileImageLocalPath;
+    if (req.files && Array.isArray(req.files.profileImage)
+    && req.files.profileImage.length > 0) {
+        profileImageLocalPath = req.files.profileImage[0].path}
     
-    const coverImage = await uploadOnCloudinary(coverImageLocalPath)
+    
+    const profileImage = await uploadOnCloudinary(profileImageLocalPath)
 
     // Store in database
     const user = await User.create({
@@ -39,7 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
         email,
         password, 
         username: username.toLowerCase(),
-        coverImage: coverImage?.url || "",
+        profileImage: profileImage?.url || "",
         city,
         state,
         addressLine1,
@@ -60,5 +63,5 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 export { registerUser };
-
+//export with variable import with variable
 //console.log("Exporting registerUser:", typeof registerUser);

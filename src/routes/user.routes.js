@@ -11,7 +11,7 @@ router.route("/register").post(
     
     upload.fields([
         {
-            name: "coverImage",
+            name: "profileImage",
             maxCount: 1,
         },
     ]),
