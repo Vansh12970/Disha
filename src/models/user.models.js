@@ -37,7 +37,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        avatar: {
+        coverImage: {
             type: String, //cloudinary url
         },
         location :{
