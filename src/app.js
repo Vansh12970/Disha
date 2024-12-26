@@ -15,6 +15,15 @@ app.use(express.json({limit: "20kb"}))
 app.use(express.urlencoded({extended: true, limit: "20kb"}))
 //to store images on server and publicly avaliable
 app.use(express.static("public"))
-app.use(cookieParser)
+app.use(cookieParser())
+
+
+//ROUTES IMPORT
+
+import userRouter from "./routes/user.routes.js"
+
+//Routes declaration
+app.use("/api/v1/users", userRouter)
+//this will create a url like https:8000/api/v1/users/registers
 
 export { app }
