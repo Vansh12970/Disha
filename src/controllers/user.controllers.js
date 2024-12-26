@@ -1,4 +1,4 @@
-import { asyncHandler } from "../middlewares/asyncHandler.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { User } from "../models/user.models.js"
 import { ApiError } from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
@@ -57,9 +57,9 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 //  When user successfully created
 
-     return res.status(201).json (
-        new ApiResponse(200, createdUser, "User Registered Successfully")
-     )
+    return res.status(201).json(
+      new ApiResponse(200, createdUser, "User Registerd Successfully")
+   )
 })
 
 
