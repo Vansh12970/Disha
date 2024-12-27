@@ -17,7 +17,7 @@ const generateAccessAndRefreshTokens = async(userId) => {
 // Don't check any necessary requirement define in user model
         await user.save({validateBeforeSave: false})
 
-        return {accessToken, refreshToekn}
+        return {accessToken, refreshToken}
 
     } catch (error) {
         throw new ApiError(500, "Something Went Wrong while generating accesstoken and refreshtoken")
