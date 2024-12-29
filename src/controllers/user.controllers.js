@@ -46,22 +46,30 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
    
-    // Handle coverImage upload
+    // Handle profileImage upload
     let profileImageLocalPath;
     if (req.files && Array.isArray(req.files.profileImage)
     && req.files.profileImage.length > 0) {
         profileImageLocalPath = req.files.profileImage[0].path}
     
-    
-    const profileImage = await uploadOnCloudinary(profileImageLocalPath)
+    let profileImage = "";
+    if(profileImageLocalPath){
+        const uploadedImage = await uploadOnCloudinary(profileImageLocalPath);
+        profileImage = uploadedImage?.url || "";
+    }
+    //const profileImage = await uploadOnCloudinary(profileImageLocalPath)
 
+    //handle loaction
+    if(!location || !location.type || !Array.isArray(location.coordinates) || location.coordiantes.length !== 2) {
+        throw new ApiError(400, "Invalid location data. Ensure 'type' is 'Point' and 'coordinates' are [longitude, latitude]. ")
+    }
     // Store in database
     const user = await User.create({
         fullName,
         email,
         password, 
         username: username.toLowerCase(),
-        profileImage: profileImage?.url || "",
+        profileImage: profileImage,
         city,
         state,
         addressLine1,
