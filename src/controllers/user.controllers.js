@@ -27,6 +27,8 @@ const generateAccessAndRefreshTokens = async(userId) => {
 const registerUser = asyncHandler(async (req, res) => {
     const { fullName, email, username, password, addressLine1, state, city, location } = req.body;
 
+    console.log(req.body)
+
     // Validate required fields
     if (
         [fullName, email, username, password, addressLine1, state, city, location].some(
@@ -60,9 +62,16 @@ const registerUser = asyncHandler(async (req, res) => {
     //const profileImage = await uploadOnCloudinary(profileImageLocalPath)
 
     //handle loaction
-    if(!location || !location.type || !Array.isArray(location.coordinates) || location.coordiantes.length !== 2) {
+    if(!location || location.type !== 'Point' || !Array.isArray(location.coordinates) || location.coordiantes.length !== 2) {
         throw new ApiError(400, "Invalid location data. Ensure 'type' is 'Point' and 'coordinates' are [longitude, latitude]. ")
     }
+
+    //ensuring coordinates are numbers
+    const [longitude, latitude] = location.coordinates;
+    if (isNaN(longitude) || isNaN(latitude)){
+        throw new ApiError(400, "Invalid coordinates. Longitude and latitude must be numbers")
+    }
+    
     // Store in database
     const user = await User.create({
         fullName,

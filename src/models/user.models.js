@@ -43,9 +43,8 @@ const userSchema = new Schema(
         location: {
             type: {
                 type: String, 
-                enum: ['Point','point'], 
+                enum: ['Point'], 
                 required: true,
-                default: 'Point',
             },
             coordinates: {
                 type: [Number], 
@@ -64,6 +63,8 @@ const userSchema = new Schema(
             required :[true, "Password is required"]
         }
     },{timestamps:true})
+// geospatial index help to execute geospatial queries
+//  userSchema.index({location: '2dsphere'});
 
 //Before saving data encrypt the password using (bcrypt) middleware
 userSchema.pre("save", async function (next) {
