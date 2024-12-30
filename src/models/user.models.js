@@ -48,7 +48,8 @@ const userSchema = new Schema(
             },
             coordinates: {
                 type: [Number], 
-                required: true
+                required: true,
+                index : '2dsphere'
             }
         },
         // should i include this feature that how many videos user watch, the videos comes in report
