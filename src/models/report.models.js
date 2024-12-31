@@ -7,14 +7,8 @@ const reportSchema = new Schema(
             type: String, //cloudinary url
             required: true,
         },
-// should i add this
-        thumbnail: {
-            type: String, //cloudinary url
-            required: true,
-        },
-        image: {
+        imageFile: {
             type: String,  //cloudinary url
-            required: true,
         },
         title: {
             type: String,
@@ -23,10 +17,6 @@ const reportSchema = new Schema(
         description: {
             type: String,
             required: true,
-        },
-        views: {
-            type: Number,
-            default: 0,
         },
         isPublished: {
             type: Boolean,

@@ -52,13 +52,6 @@ const userSchema = new Schema(
                 index : '2dsphere'
             }
         },
-        // should i include this feature that how many videos user watch, the videos comes in report
-        watchHistory: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Report",
-            }
-        ],
         password: {
             type: String,
             required :[true, "Password is required"]
