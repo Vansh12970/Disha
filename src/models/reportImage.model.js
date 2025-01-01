@@ -1,9 +1,9 @@
 import mongoose, {Schema} from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
-const reportSchema = new Schema(
+const reportImageSchema = new Schema(
     {
-        videoFile: {
+        imageFile: {
             type: String,
             required: true,  //cloudinary url
         },
@@ -25,6 +25,6 @@ const reportSchema = new Schema(
         },
     },{timestamps:true})
 
-reportSchema.plugin(mongooseAggregatePaginate)
+reportImageSchema.plugin(mongooseAggregatePaginate)
 
-export const Report = mongoose.model("Report", reportSchema)
+export const reportImage = mongoose.model("ReportImage", reportImageSchema)
