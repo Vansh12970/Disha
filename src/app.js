@@ -21,11 +21,12 @@ app.use(cookieParser())
 //routes import
 import userRouter from "./routes/user.routes.js"
 import videoRouter from "./routes/report.routes.js"
-
+import imageRouter from "./routes/reportImage.routes.js"
 
 //Routes declaration
 app.use("/api/v1/users", userRouter );
 app.use("/api/v1/videos", videoRouter);
+app.use("/api/v1/images", imageRouter);
 //this will create a url like https:8080/api/v1/users/registers
 
 export { app }
