@@ -6,6 +6,10 @@ const volunteerSchema = new Schema(
             type: String,
             required: true,
         },
+        avatar: {
+            type: String,
+            required: true,
+        },
         contactDetails: {
             type: String,
             required: true,

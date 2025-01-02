@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { reportImage } from "../models/reportImage.model.js"
-import { User } from "../models/user.models.js"
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js"
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -50,7 +49,7 @@ const updateImage = asyncHandler(async(req, res) => {
 
     const image = await reportImage.findById(imageId);
     if(!image) {
-        throw new ApiError(404, "Image is not found")
+        throw new ApiError(404, "Report-Image is not found")
     }
 
     // check the owner of image is user 
@@ -61,7 +60,7 @@ const updateImage = asyncHandler(async(req, res) => {
     const imageLocalPath = req.file?.path;
     const newImage = await uploadOnCloudinary(imageLocalPath);
 
-    if(!newImage.url) {
+    if(!newImage) {
         throw new ApiError(500, "Image upload on cloudinary failed")
     }
 
@@ -98,7 +97,7 @@ const deleteImage = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Invalid image ID")
     }
 
-    const image = await Report.findById(imageId);
+    const image = await reportImage.findById(imageId);
     if (!image) {
         throw new ApiError(404, "Image is not found");
     }
@@ -125,7 +124,7 @@ const deleteImage = asyncHandler(async (req, res) => {
 const togglePublishStatus = asyncHandler (async(req, res) => {
     const { imageId } =req.params;
 
-    const image = await Report.findById(imageId);
+    const image = await reportImage.findById(imageId);
 
     if(!image) {
         throw new ApiError(500, "Image not found");

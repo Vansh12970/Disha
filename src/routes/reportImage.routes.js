@@ -25,8 +25,8 @@ router
 
 router
     .route("/:imageId")
-    .delete(deleteVideo)
-    .patch(upload.single("imageFile"), imageUpdate);
+    .delete(deleteImage)
+    .patch(upload.single("imageFile"), updateImage);
 
 router.route("/toggle/publish/:imageId").patch(togglePublishStatus);
 

@@ -15,3 +15,5 @@ router
     .route("/:aidId")
     .patch(updateAid)
     .delete(deleteAid)
+
+export default router

@@ -25,7 +25,7 @@ const userSchema = new Schema(
             trim: true,
             index: true
         },
-        addressLine1: {
+        address: {
             type: String,
             required: true,
         },
