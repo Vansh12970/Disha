@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Volunteer } from "../models/report.models.js";
+import { Volunteer } from "../models/volunteer.models.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
