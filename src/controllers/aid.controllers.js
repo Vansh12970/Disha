@@ -7,24 +7,49 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 
 // Create aid by user 
 const makeAid = asyncHandler(async(req, res)=> {
-    const { aidType, description, quantity, address, city, contactDetails, state} = req.body
+    const { aidType, description, quantity, address, city, contactDetails, state, useUserDetails} = req.body
 
     if(
-        [aidType, description, quantity, address, city, contactDetails, state].some(
+        [aidType, description, quantity, contactDetails,].some(
             (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
         )
     ) {
         throw new ApiError(400, "All fields are required");
+    }
+    
+    let finalAddress = address;
+    let finalCity = city;
+    let finalState = state;
+
+    if(useUserDetails) {
+        // fetch detils from user db if user want 
+        const user = await User.findById(req.user._id);
+
+        if(!user) {
+            throw new ApiError(404, "User Details Not Found");
+        }
+
+        finalAddress =user.address || finalAddress;
+        finalCity = user.city || finalCity;
+        finalState = user.state || finalState;
+    }
+
+    // validate that the address fields are filled
+    if(
+        [finalAddress, finalCity, finalState].some(
+            (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
+    )) {
+        throw new ApiError(400, "Address, state, city fields are required")
     }
 
     const aidUpload = await Aid.create({
         aidType,
         description, 
         quantity, 
-        address, 
-        city, 
+        address : finalAddress,
+        city : finalCity,
         contactDetails, 
-        state,
+        state : finalState,
     })
 
     if(!aidUpload) {

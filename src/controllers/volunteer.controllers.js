@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Volunteer } from "../models/volunteer.models.js";
+import { User } from "../models/user.models.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -11,10 +12,15 @@ import {
 
 // Apply for a volunteer
 const applyAsVolunteer = asyncHandler(async(req, res) => {
-    const {fullName, contactDetails, address, city, state} = req.body
-
+    const {fullName, contactDetails, address, city, state, useUserDetails} = req.body
+  //  const {fullName, contactDetails, address, city, state} = req.body
+  /*if(
+    [fullName, contactDetails, address, city, state].some(
+        (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
+    )
+)*/
     if(
-        [fullName, contactDetails, address, city, state].some(
+        [fullName, contactDetails].some(
             (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
         )
     ) {
@@ -32,13 +38,40 @@ const applyAsVolunteer = asyncHandler(async(req, res) => {
         throw new ApiError(400, "Image Uploading failed")
     }
 
+// Import details of user from user schema
+    let finalAddress = address;
+    let finalCity = city;
+    let finalState = state;
+
+    if(useUserDetails) {
+        // fetch detils from user db if user want 
+        const user = await User.findById(req.user._id);
+
+        if(!user) {
+            throw new ApiError(404, "User Details Not Found");
+        }
+
+        finalAddress =user.address || finalAddress;
+        finalCity = user.city || finalCity;
+        finalState = user.state || finalState;
+    }
+
+    // validate that the address fields are filled
+    if(
+        [finalAddress, finalCity, finalState].some(
+            (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
+    )) {
+        throw new ApiError(400, "Address, state, city fields are required")
+    }
+
+
     const volunteerUpload = await Volunteer.create({
         avatar: avatar.url,
         fullName,
         contactDetails, 
-        address, 
-        city, 
-        state
+        address : finalAddress,
+        city : finalCity,
+        state : finalState,
     });
 
     if(!volunteerUpload) {
