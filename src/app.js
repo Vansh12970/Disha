@@ -24,14 +24,15 @@ import videoRouter from "./routes/report.routes.js"
 import imageRouter from "./routes/reportImage.routes.js"
 import aidRouter from "./routes/aid.routes.js"
 import volunteerRouter from "./routes/volunteer.routes.js"
+import routeRouter from "./routes/safeRoute.routes.js";
 
 //Routes declaration
 app.use("/api/v1/users", userRouter );
 app.use("/api/v1/videos", videoRouter);
 app.use("/api/v1/images", imageRouter);
 app.use("/api/v1/aid", aidRouter);
-app.use("/api/vi/volunteer", volunteerRouter)
-
+app.use("/api/v1/volunteer", volunteerRouter);
+app.use("/api/v1/safeRoute", routeRouter);
 //this will create a url like https:8080/api/v1/users/registers
 
 export { app }
