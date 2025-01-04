@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 import { Volunteer } from "../models/volunteer.models.js";
 import { User } from "../models/user.models.js";
 import { ApiError } from "../utils/ApiError.js";
-import { ApiResponse } from "../ApiResponse.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { 
     deleteResourceOnCloudinary,
     uploadOnCloudinary,
-} from "../utils/cloudinary";
+} from "../utils/cloudinary.js";
 
 
 // Apply for a volunteer

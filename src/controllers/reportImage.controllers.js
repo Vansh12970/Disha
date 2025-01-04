@@ -6,7 +6,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { 
     deleteResourceOnCloudinary,
     uploadOnCloudinary,
-} from "../utils/cloudinary";
+} from "../utils/cloudinary.js";
 
 // upload the report - image
 const sendImageReport = asyncHandler(async(req, res) => {
