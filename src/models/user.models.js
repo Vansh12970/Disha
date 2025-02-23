@@ -37,6 +37,18 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        bloodGroup: {
+            type: String,
+            required: true,
+        },
+        age: {
+            type: Number,
+            required: true,
+        },
+        gender: {
+            type: String,
+            required: true,
+        },
         profileImage: {
             type: String, //cloudinary url
         },
