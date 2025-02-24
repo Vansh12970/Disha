@@ -52,18 +52,6 @@ const userSchema = new Schema(
         profileImage: {
             type: String, //cloudinary url
         },
-        location: {
-            type: {
-                type: String, 
-                enum: ['Point'], 
-                required: true,
-            },
-            coordinates: {
-                type: [Number], 
-                required: true,
-                index : '2dsphere'
-            }
-        },
         password: {
             type: String,
             required :[true, "Password is required"]
