@@ -16,12 +16,12 @@ const router = Router()
 
 router.route("/register").post(
     
-    upload.fields([
+   /* upload.fields([
         {
             name: "profileImage",
             maxCount: 1,
         },
-    ]),
+    ]),*/
     registerUser)
 
 router.route("/login").post(loginUser)
