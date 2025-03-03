@@ -1,24 +1,19 @@
 import mongoose, {Schema} from "mongoose"
 
-const aidSchema = new Schema(
+const moneySchema = new Schema(
     {
-        aidType: {
+        name: {
             type: String,
             required: true,
         },
-        quantity: {
+        contact: {
             type: String,
             required: true,
         },
-        address: {
-            type: String,
-            required: true
-        },
-        owner: {
+        owner : {
             type: Schema.Types.ObjectId,
             ref: "User"
         },
     },{timestamps: true})
 
-
-export const Aid = mongoose.model("Aid", aidSchema)
+export const Money = mongoose.model("Money", moneySchema)

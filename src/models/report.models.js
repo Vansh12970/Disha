@@ -15,10 +15,13 @@ const reportSchema = new Schema(
             type: String,
             required: true,
         },
-        isPublished: {
-            type: Boolean,
-            default: true,
-        },
+        location:{
+            type: {
+              lat: { type: Number, required: true },
+              lon: { type: Number, required: true }
+            },
+            required: true
+          },
         owner: {
             type: Schema.Types.ObjectId,
             ref: "User",

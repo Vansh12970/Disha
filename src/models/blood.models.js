@@ -1,23 +1,28 @@
 import mongoose, {Schema} from "mongoose"
 
-const donationSchema = new Schema(
+const bloodSchema = new Schema(
     {
-        fullName: {
+        name: {
             type: String,
             required: true,
         },
-        contactNumber: {
+        age: {
             type: String,
             required: true,
         },
-        upiId : {
+        bloodGroup: {
             type: String,
-            required: true,
+            required: true
         },
-        owner : {
+        address: {
+            type: String,
+            required: true
+        },
+        owner: {
             type: Schema.Types.ObjectId,
             ref: "User"
         },
     },{timestamps: true})
 
-export const Donation = mongoose.model("Donation", donationSchema)
+
+export const Blood = mongoose.model("Blood", bloodSchema)

@@ -1,16 +1,16 @@
 import mongoose, { isValidObjectId } from "mongoose";
-import { Aid } from "../models/aid.models.js";
+import { Blood } from "../models/blood.models.js";
 import { User } from "../models/user.models.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
-// Create aid by user 
-const makeAid = asyncHandler(async(req, res)=> {
-    const { aidType, quantity, address} = req.body
+// Create donate by user 
+const bloodDonate = asyncHandler(async(req, res)=> {
+    const { name, age, bloodGroup, address} = req.body
 
     if(
-        [aidType, quantity, address ].some(
+        [name, age, bloodGroup, address].some(
             (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
         )
     ) {
@@ -40,21 +40,22 @@ const makeAid = asyncHandler(async(req, res)=> {
         throw new ApiError(400, "Address, state, city fields are required")
     }*/
 
-    const aidUpload = await Aid.create({
-        aidType, 
-        quantity, 
-        address,
+    const bloodUpload = await Blood.create({
+        name, 
+        age,
+        bloodGroup,
+        address 
     })
 
-    if(!aidUpload) {
-        throw new ApiError(500, "Aid creation failed")
+    if(!bloodUpload) {
+        throw new ApiError(500, "Blood donation creation failed")
     }
 
     return res
     .status(200)
-    .json(new ApiResponse(200, aidUpload, "Aid successfully submitted"))
+    .json(new ApiResponse(200, bloodUpload, "Blood donation successfully submitted"))
 });
-
+/*
 // update the aid 
 const updateAid = asyncHandler(async(req, res) => {
     const { aidId } = req.params
@@ -120,9 +121,9 @@ const deleteAid = asyncHandler(async(req, res) => {
    .status(200)
    .json(new ApiResponse(200, null, "Aid successfully deleted"))
 });
-
+*/
 export {
-    makeAid,
-    updateAid,
-    deleteAid,
+    bloodDonate,
+   // updateAid,
+   // deleteAid,
 };

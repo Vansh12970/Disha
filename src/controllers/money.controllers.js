@@ -1,16 +1,16 @@
 import mongoose, { isValidObjectId } from "mongoose";
-import { Aid } from "../models/aid.models.js";
+import { Money } from "../models/money.model.js";
 import { User } from "../models/user.models.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
-// Create aid by user 
-const makeAid = asyncHandler(async(req, res)=> {
-    const { aidType, quantity, address} = req.body
+// Create donate by user 
+const makeDonate = asyncHandler(async(req, res)=> {
+    const { name, contact} = req.body
 
     if(
-        [aidType, quantity, address ].some(
+        [name, contact].some(
             (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
         )
     ) {
@@ -40,21 +40,20 @@ const makeAid = asyncHandler(async(req, res)=> {
         throw new ApiError(400, "Address, state, city fields are required")
     }*/
 
-    const aidUpload = await Aid.create({
-        aidType, 
-        quantity, 
-        address,
+    const moneyUpload = await Money.create({
+        name, 
+        contact, 
     })
 
-    if(!aidUpload) {
+    if(!moneyUpload) {
         throw new ApiError(500, "Aid creation failed")
     }
 
     return res
     .status(200)
-    .json(new ApiResponse(200, aidUpload, "Aid successfully submitted"))
+    .json(new ApiResponse(200, moneyUpload, "Aid successfully submitted"))
 });
-
+/*
 // update the aid 
 const updateAid = asyncHandler(async(req, res) => {
     const { aidId } = req.params
@@ -120,9 +119,9 @@ const deleteAid = asyncHandler(async(req, res) => {
    .status(200)
    .json(new ApiResponse(200, null, "Aid successfully deleted"))
 });
-
+*/
 export {
-    makeAid,
-    updateAid,
-    deleteAid,
+    makeDonate,
+   // updateAid,
+   // deleteAid,
 };
