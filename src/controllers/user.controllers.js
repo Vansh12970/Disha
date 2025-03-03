@@ -25,11 +25,11 @@ const generateAccessAndRefreshTokens = async(userId) => {
 }
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { fullName, email, username, password, address, state, city, bloodGroup, age, gender} = req.body;
-console.log(req.body);
+    const { fullName, email, username,contact, password, address, state, city, bloodGroup, age, gender} = req.body;
+     console.log(req.body);
     // Validate required fields
     if (
-        [fullName, email, username, password, address, state, city, bloodGroup, age, gender].some(
+        [fullName, email, username, password,contact, address, state, city, bloodGroup, age, gender].some(
             (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
         )
     ) {
@@ -58,6 +58,7 @@ console.log(req.body);
     const user = await User.create({
         fullName,
         email,
+        contact,
         password, 
         username: username.toLowerCase(),
         profileImage: profileImage?.url || "",
