@@ -10,7 +10,7 @@ import {
 
 // upload the report - image
 const sendImageReport = asyncHandler(async(req, res) => {
-    const {title, description} = req.body;
+    const {title, description, location} = req.body;
 
     if(!(title.trim() && description.trim())) {
         throw new ApiError(400, "Report title and description is required");
@@ -31,6 +31,7 @@ const sendImageReport = asyncHandler(async(req, res) => {
         imageFile: image.url,
         title,
         description,
+        location,
         owner: req.user?._id,
     });
 

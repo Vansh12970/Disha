@@ -10,7 +10,7 @@ import {
 
 // upload the report
 const sendVideoReport = asyncHandler(async (req, res) => {
-    const {title, description} = req.body;
+    const {title, description, location} = req.body;
 
     if(!(title.trim() && description.trim())) {
         throw new ApiError(400, "Report title and description is required!");
@@ -31,6 +31,7 @@ const sendVideoReport = asyncHandler(async (req, res) => {
         videoFile: video.url,
         title,
         description,
+        location,
         owner: req.user?._id,
     });
 
