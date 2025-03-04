@@ -27,7 +27,8 @@ const applyAsVolunteer = asyncHandler(async(req, res) => {
         throw new ApiError(400, "All field are required")
     }
 
-    const avatarLocalPath = req.file?.avatar[0]?.path;
+    const avatarLocalPath = req.files?.avatar[0]?.path;
+    console.log(avatarLocalPath)
     if(!avatarLocalPath) {
         throw new ApiError(400, "Image file is required")
     }
@@ -93,7 +94,7 @@ const updateVolunteer = asyncHandler(async(req, res) => {
         throw new ApiError(404, "Avatar is not found")
     }
 
-    const avatarLocalPath = req.files?.path;
+    const avatarLocalPath = req.file?.path;
     const newAvatar = await uploadOnCloudinary(avatarLocalPath);
 
     if(!newAvatar) {
