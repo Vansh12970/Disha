@@ -13,6 +13,7 @@ import {
 // Apply for a volunteer
 const applyAsVolunteer = asyncHandler(async(req, res) => {
     const {fullName, contactDetails, address, city, state, useUserDetails} = req.body
+    console.log(req.body)
   //  const {fullName, contactDetails, address, city, state} = req.body
   /*if(
     [fullName, contactDetails, address, city, state].some(
@@ -28,7 +29,8 @@ const applyAsVolunteer = asyncHandler(async(req, res) => {
     }
 
     const avatarLocalPath = req.files?.avatar[0]?.path;
-    console.log(avatarLocalPath)
+    console.log(req.files)
+    
     if(!avatarLocalPath) {
         throw new ApiError(400, "Image file is required")
     }

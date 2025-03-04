@@ -4,11 +4,11 @@ import {
     updateVolunteer,
     deleteVolunteer
 } from "../controllers/volunteer.controllers.js"
-import { verifyJWT } from "../middlewares/auth.middleware.js";
+//import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js"
 
 const router = Router();
-router.use(verifyJWT);
+// router.use(verifyJWT);
 
 router
     .route("/")
