@@ -25,11 +25,11 @@ const generateAccessAndRefreshTokens = async(userId) => {
 }
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { fullName, email, username,contact, password, address, state, city, bloodGroup, age, gender} = req.body;
+    const { fullName, email, username,contact, password, address, pincode, state, city, bloodGroup, age, gender} = req.body;
      console.log(req.body);
     // Validate required fields
     if (
-        [fullName, email, username, password,contact, address, state, city, bloodGroup, age, gender].some(
+        [fullName, email, username, password,contact, address, pincode, state, city, bloodGroup, age, gender].some(
             (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
         )
     ) {
@@ -68,6 +68,7 @@ const registerUser = asyncHandler(async (req, res) => {
         age,
         gender,
         address,
+        pincode,
     });
 
     // Fetch the created user excluding sensitive fields

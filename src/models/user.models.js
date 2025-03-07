@@ -35,6 +35,10 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        pincode: {
+            type: String,
+            required: true,
+        },
         state: {
             type: String,
             required: true,

@@ -8,7 +8,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 // Create donate by user 
 const bloodDonate = asyncHandler(async(req, res)=> {
     const { name, age, bloodGroup, address} = req.body
-
+console.log(req.body)
     if(
         [name, age, bloodGroup, address].some(
             (field) => field === undefined || field === null || (typeof field === "string" && field.trim() === "")
